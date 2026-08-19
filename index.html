@@ -13,37 +13,49 @@
     position:relative; min-height:100vh; display:flex; align-items:flex-end;
     background:#333; overflow:hidden;
   }
-  .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; }
+  .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 30%; z-index:0; }
+  .hero .year-overlay{
+    position:absolute; z-index:1; top:8%; right:-2%; line-height:1;
+    font-family:'Fraunces',serif; font-weight:700; font-size:clamp(140px,32vw,340px);
+    color:rgba(251,248,241,.14); letter-spacing:-0.02em; pointer-events:none; user-select:none;
+    mix-blend-mode:overlay;
+  }
   .hero::before{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; z-index:1;
     background:linear-gradient(0deg, rgba(20,18,12,.72) 0%, rgba(20,18,12,.15) 45%, rgba(20,18,12,.35) 100%);
   }
-  .hero-content{ position:relative; z-index:2; padding:0 32px 110px; color:var(--paper); max-width:600px; }
+  .hero-content{ position:relative; z-index:2; padding:0 32px 130px; color:var(--paper); max-width:600px; }
   .hero .eyebrow{ color:var(--babyblue); opacity:.95; letter-spacing:.28em; }
   .hero h1{
     font-size:clamp(48px,14vw,96px); font-weight:800; color:var(--paper); line-height:.9;
-    margin-top:18px; letter-spacing:-0.01em; text-shadow:0 4px 24px rgba(0,0,0,.25);
+    margin-top:20px; letter-spacing:-0.01em; text-shadow:0 4px 24px rgba(0,0,0,.25);
   }
-  .hero h1 .and{ display:block; font-family:'Mrs Saint Delafield', cursive; font-weight:400; font-size:.42em; color:var(--rosewater); margin:8px 0; }
-  .hero .venue{ margin-top:26px; font-size:16px; color:rgba(251,248,241,.92); }
+  .hero h1 .and{ display:block; font-family:'Mrs Saint Delafield', cursive; font-weight:400; font-size:.42em; color:var(--rosewater); margin:10px 0; }
+  .hero .venue{ margin-top:30px; font-size:16px; color:rgba(251,248,241,.92); }
   .hero .venue .date{ font-weight:700; letter-spacing:.08em; }
-  .hero .venue .place{ font-family:'Fraunces',serif; font-style:italic; opacity:.9; margin-top:5px; font-size:15px; }
+  .hero .venue .place{ font-family:'Fraunces',serif; font-style:italic; opacity:.9; margin-top:6px; font-size:15px; }
   .hero .btn-std{
-    display:inline-block; margin-top:34px; padding:15px 32px; border:1px solid rgba(251,248,241,.85);
-    border-radius:999px; color:var(--paper); font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+    display:inline-flex; align-items:center; gap:9px; margin-top:38px; padding:15px 30px 15px 32px;
+    border:1px solid rgba(251,248,241,.85); border-radius:999px; color:var(--paper);
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+    transition:background .25s, color .25s, transform .25s;
   }
+  .hero .btn-std:hover{ background:var(--paper); color:var(--ink); transform:translateY(-2px); }
+  .hero .btn-std svg{ width:13px; height:13px; }
+
+  .scroll-cue{ position:absolute; left:50%; transform:translateX(-50%); bottom:26px; z-index:3; }
 
   .wave-divider{ display:block; width:100%; height:60px; margin-top:-2px; position:relative; z-index:2; }
   .wave-divider path{ fill:var(--paper); }
 
   /* ---------- OUR STORY (collage) ---------- */
-  .story-section{ padding:70px 24px 60px; }
-  .story-grid{ display:grid; gap:40px; max-width:1000px; margin:0 auto; align-items:center; }
+  .story-section{ padding:90px 24px 80px; }
+  .story-grid{ display:grid; gap:56px; max-width:1000px; margin:0 auto; align-items:center; }
   @media (min-width:820px){ .story-grid{ grid-template-columns:1fr 1.1fr; } }
   .story-copy .eyebrow{ text-align:left; }
-  .story-copy h2{ font-size:clamp(26px,4.5vw,36px); margin-top:10px; line-height:1.15; }
-  .story-copy h2 .accent{ font-family:'Mrs Saint Delafield', cursive; color:var(--rosewater-deep); font-weight:400; font-size:1.05em; display:block; }
-  .story-copy p{ margin-top:16px; font-size:14px; color:#4a4735; line-height:1.75; max-width:420px; }
+  .story-copy h2{ font-size:clamp(26px,4.5vw,36px); margin-top:14px; line-height:1.2; }
+  .story-copy h2 .accent{ font-family:'Mrs Saint Delafield', cursive; color:var(--rosewater-deep); font-weight:400; font-size:1.05em; display:block; margin-top:4px; }
+  .story-copy p{ margin-top:22px; font-size:14px; color:#4a4735; line-height:1.85; max-width:420px; }
   .story-collage{ position:relative; height:420px; }
   .story-collage .main{ position:absolute; left:0; top:0; width:64%; height:100%; border-radius:6px; overflow:hidden; box-shadow:0 30px 50px -20px rgba(44,42,34,.35); }
   .story-collage .small{ position:absolute; right:0; width:44%; height:46%; border-radius:6px; overflow:hidden; box-shadow:0 20px 40px -16px rgba(44,42,34,.35); border:6px solid var(--paper); }
@@ -55,70 +67,75 @@
   }
 
   /* ---------- COUNTDOWN BAND ---------- */
-  .countdown-band{ background:var(--pistachio-deep); padding:48px 24px; text-align:center; }
+  .countdown-band{ background:var(--pistachio-deep); padding:64px 24px; text-align:center; }
   .countdown-band .eyebrow{ color:var(--paper); opacity:.75; }
   .countdown-band .divider{ background:rgba(251,248,241,.4); }
-  .cd-row{ display:flex; justify-content:center; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .cd-row{ display:flex; justify-content:center; gap:14px; margin-top:28px; flex-wrap:wrap; }
   .cd-row .item{ min-width:70px; }
   .cd-row .n{ font-family:'Fraunces',serif; font-weight:560; font-size:clamp(34px,7vw,52px); color:var(--paper); display:block; }
-  .cd-row .l{ font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(251,248,241,.7); margin-top:2px; display:block; }
+  .cd-row .l{ font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(251,248,241,.7); margin-top:6px; display:block; }
   .cd-row .sep{ font-family:'Fraunces',serif; font-size:clamp(34px,7vw,52px); color:rgba(251,248,241,.35); align-self:flex-start; margin-top:2px; }
 
   /* ---------- THE BIG DAY (icons) ---------- */
-  .bigday-section{ padding:70px 24px 50px; text-align:center; }
-  .bigday-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:36px 20px; max-width:760px; margin:40px auto 0; }
+  .bigday-section{ padding:90px 24px 70px; text-align:center; }
+  .bigday-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:48px 24px; max-width:760px; margin:52px auto 0; }
   @media (min-width:640px){ .bigday-grid{ grid-template-columns:repeat(4,1fr); } }
   .bigday-item svg{ width:34px; height:34px; margin:0 auto; display:block; color:var(--rosewater-deep); }
-  .bigday-item .label{ margin-top:14px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#4a4735; }
-  .bigday-item .time{ margin-top:6px; font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:var(--ink); }
+  .bigday-item .label{ margin-top:18px; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#4a4735; }
+  .bigday-item .time{ margin-top:8px; font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:var(--ink); }
 
   /* ---------- RSVP TEASER ---------- */
-  .rsvp-teaser{ padding:0 24px 100px; }
+  .rsvp-teaser{ padding:0 24px 120px; }
   .rsvp-outer{ position:relative; max-width:1000px; margin:0 auto; }
   .rsvp-frame{
     position:relative; border-radius:10px; overflow:hidden;
-    min-height:420px; display:flex; align-items:center;
+    min-height:440px; display:flex; align-items:center;
   }
   .rsvp-frame img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .rsvp-frame::before{ content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(20,18,12,.65) 0%, rgba(20,18,12,.15) 60%); }
-  .rsvp-copy{ position:relative; z-index:2; padding:40px; color:var(--paper); max-width:340px; }
+  .rsvp-copy{ position:relative; z-index:2; padding:48px; color:var(--paper); max-width:340px; }
   .rsvp-copy .eyebrow{ color:var(--rosewater); text-align:left; }
-  .rsvp-copy h2{ color:var(--paper); font-size:clamp(28px,5vw,38px); margin-top:8px; }
+  .rsvp-copy h2{ color:var(--paper); font-size:clamp(28px,5vw,38px); margin-top:12px; }
   .rsvp-copy .by{ font-family:'Mrs Saint Delafield', cursive; color:var(--babyblue); font-size:22px; }
-  .rsvp-copy p{ margin-top:12px; font-size:14px; color:rgba(251,248,241,.85); }
-  .rsvp-copy .btn-std{ display:inline-block; margin-top:20px; padding:13px 28px; border-radius:999px; background:var(--rosewater); color:#4a2530; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; }
+  .rsvp-copy p{ margin-top:16px; font-size:14px; color:rgba(251,248,241,.85); line-height:1.7; }
+  .rsvp-copy .btn-std{
+    display:inline-flex; align-items:center; gap:9px; margin-top:26px; padding:14px 26px 14px 28px;
+    border-radius:999px; border:1px solid var(--rosewater); background:transparent; color:var(--paper);
+    font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+    transition:background .25s, color .25s;
+  }
+  .rsvp-copy .btn-std:hover{ background:var(--rosewater); color:#4a2530; }
+  .rsvp-copy .btn-std svg{ width:13px; height:13px; }
   .gift-card{
     position:absolute; right:6%; bottom:-40px; z-index:3; width:220px; background:var(--rosewater);
-    padding:24px 20px; border-radius:4px; box-shadow:0 30px 50px -18px rgba(44,42,34,.4); text-align:center;
+    padding:28px 22px; border-radius:4px; box-shadow:0 30px 50px -18px rgba(44,42,34,.4); text-align:center;
     display:none;
   }
   @media (min-width:760px){ .gift-card{ display:block; } }
   .gift-card .t{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#7a3b48; }
-  .gift-card p{ margin-top:10px; font-size:12px; color:#5c2f3a; line-height:1.6; }
+  .gift-card p{ margin-top:12px; font-size:12px; color:#5c2f3a; line-height:1.7; }
 </style>
 </head>
 <body>
 
 <nav class="site-nav">
-  <div class="wrap">
-    <a href="index.html" class="brand">S &amp; B</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-    <a href="rsvp.html" class="nav-rsvp">RSVP Now</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="our-story.html">Our Story</a></li>
-      <li><a href="details.html">Details</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="gifts.html">Gifts</a></li>
-      <li><a href="photos.html">Photos</a></li>
-    </ul>
-  </div>
+  <a href="index.html" class="brand">S &amp; B</a>
+</nav>
+<a href="rsvp.html" class="nav-rsvp">RSVP Now</a>
+<nav class="persistent-nav">
+  <a href="index.html" class="active">Home</a>
+  <a href="our-story.html">Our Story</a>
+  <a href="details.html">Details</a>
+  <a href="rsvp.html">RSVP</a>
+  <a href="travel-stay.html">Travel &amp; Stay</a>
+  <a href="faq.html">FAQ</a>
+  <a href="gifts.html">Gifts</a>
+  <a href="photos.html">Photos</a>
 </nav>
 
 <header class="hero">
   <img src="images/hero-landing.jpg" alt="Saff and Bam laughing together at the coast">
+  <div class="year-overlay">2027</div>
   <div class="hero-content">
     <div class="eyebrow">We're getting married</div>
     <h1>Saff<span class="and">&amp;</span>Bam</h1>
@@ -126,18 +143,22 @@
       <div class="date">31 JULY 2027</div>
       <div class="place">Grove Ferry Inn, Canterbury</div>
     </div>
-    <a href="rsvp.html" class="btn-std">Save the Date</a>
+    <a href="rsvp.html" class="btn-std">Save the Date <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
+  <a href="#story" class="scroll-cue capsule-cta">
+    our story
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+  </a>
 </header>
 <svg class="wave-divider" viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C240,0 480,60 720,40 C960,20 1200,60 1440,30 L1440,60 L0,60 Z"></path></svg>
 
-<section class="story-section">
+<section class="story-section" id="story">
   <div class="story-grid">
     <div class="story-copy">
       <div class="eyebrow">Our Story</div>
       <h2>A love written<span class="accent">in every chapter</span></h2>
       <p>From a church hello to a first date at the darts, a home we built together, and a proposal disguised as a photoshoot — our story is filled with laughter, adventure and countless beautiful moments.</p>
-      <a href="our-story.html" class="btn btn-primary" style="margin-top:22px;">Read Our Story →</a>
+      <a href="our-story.html" class="btn btn-primary" style="margin-top:22px;">Read Our Story</a>
     </div>
     <div class="story-collage">
       <div class="main"><img src="images/coast-back-1.jpg" alt="Saff and Bam at the coast" loading="lazy"></div>
@@ -177,7 +198,7 @@
     </div>
     <div class="bigday-item">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2 v9 a2 2 0 0 0 4 0 V2 M8 11 v11 M17 2 c-2 3 -2 7 0 9 v9"/></svg>
-      <div class="label">Wedding Breakfast</div>
+      <div class="label">Wedding Dinner</div>
       <div class="time">31 July · 5:30pm</div>
     </div>
     <div class="bigday-item">
@@ -186,7 +207,7 @@
       <div class="time">31 July · 8:00pm</div>
     </div>
   </div>
-  <a href="details.html" class="btn btn-primary" style="margin-top:36px;">View Full Details →</a>
+  <a href="details.html" class="btn btn-primary" style="margin-top:36px;">View Full Details</a>
 </section>
 
 <section class="rsvp-teaser">
@@ -197,7 +218,7 @@
         <div class="eyebrow">Kindly</div>
         <h2>RSVP</h2>
         <p>We can't wait to celebrate with you. Please let us know if you'll be joining us.</p>
-        <a href="rsvp.html" class="btn-std">RSVP Now</a>
+        <a href="rsvp.html" class="btn-std">RSVP Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
     <div class="gift-card">
@@ -225,12 +246,6 @@
 <script>
 (function(){
   "use strict";
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', function(){
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('is-open');
-  });
 
   var target = new Date('2027-07-31T12:00:00');
   function pad(n){ return String(n).padStart(2,'0'); }

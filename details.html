@@ -16,23 +16,21 @@
   .swatch-lg .name{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#6b6752; }
 </style>
 </head>
-<body class="solid-nav">
+<body>
 
 <nav class="site-nav">
-  <div class="wrap">
-    <a href="index.html" class="brand">S &amp; B</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="our-story.html">Our Story</a></li>
-      <li><a href="details.html" class="active">Details</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="gifts.html">Gifts</a></li>
-      <li><a href="photos.html">Photos</a></li>
-    </ul>
-  </div>
+  <a href="index.html" class="brand">S &amp; B</a>
+</nav>
+<a href="rsvp.html" class="nav-rsvp">RSVP Now</a>
+<nav class="persistent-nav">
+  <a href="index.html">Home</a>
+  <a href="our-story.html">Our Story</a>
+  <a href="details.html" class="active">Details</a>
+  <a href="rsvp.html">RSVP</a>
+  <a href="travel-stay.html">Travel &amp; Stay</a>
+  <a href="faq.html">FAQ</a>
+  <a href="gifts.html">Gifts</a>
+  <a href="photos.html">Photos</a>
 </nav>
 
 <header class="page-header">
@@ -94,7 +92,7 @@
     <h2>Keeping you fed and watered</h2>
   </div>
   <p style="font-size:14px;color:#4a4735;">Full details on the wedding breakfast menu and evening food will be shared closer to the day. If you have any dietary requirements or allergies, please let us know on your RSVP so we can take good care of you.</p>
-  <a class="btn btn-ghost" href="rsvp.html" style="margin-top:20px;">Go to RSVP →</a>
+  <a class="btn btn-ghost" href="rsvp.html" style="margin-top:20px;">Go to RSVP</a>
 </section>
 
 <section id="dress-code" style="text-align:center;">
@@ -126,13 +124,5 @@
   </nav>
 </footer>
 
-<script>
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', function(){
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('is-open');
-  });
-</script>
 </body>
 </html>

@@ -6,23 +6,21 @@
 <title>Our Story — Saff &amp; Bam</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<body class="solid-nav">
+<body>
 
 <nav class="site-nav">
-  <div class="wrap">
-    <a href="index.html" class="brand">S &amp; B</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="our-story.html" class="active">Our Story</a></li>
-      <li><a href="details.html">Details</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
-      <li><a href="faq.html">FAQ</a></li>
-      <li><a href="gifts.html">Gifts</a></li>
-      <li><a href="photos.html">Photos</a></li>
-    </ul>
-  </div>
+  <a href="index.html" class="brand">S &amp; B</a>
+</nav>
+<a href="rsvp.html" class="nav-rsvp">RSVP Now</a>
+<nav class="persistent-nav">
+  <a href="index.html">Home</a>
+  <a href="our-story.html" class="active">Our Story</a>
+  <a href="details.html">Details</a>
+  <a href="rsvp.html">RSVP</a>
+  <a href="travel-stay.html">Travel &amp; Stay</a>
+  <a href="faq.html">FAQ</a>
+  <a href="gifts.html">Gifts</a>
+  <a href="photos.html">Photos</a>
 </nav>
 
 <header class="page-header">
@@ -64,7 +62,7 @@
     <p class="body" style="margin-top:14px;">For weeks, the plan was carefully put together — making sure the right people were involved, keeping everything secret, and making sure every little detail was in place. Then, in the week of the proposal, everything nearly fell apart. Saff became unwell and was getting close to cancelling the photoshoot altogether. But despite not feeling her best, she pushed herself to make it happen.</p>
     <p class="body" style="margin-top:14px;">Little did she know, she wasn't just turning up for a photoshoot — she was walking into a moment that had been carefully planned for weeks. And what she thought was going to be an ordinary day in front of the camera became the moment Bam asked her to spend the rest of her life with him.</p>
     <p class="body" style="margin-top:14px; font-family:'Fraunces',serif; font-style:italic; text-align:center; font-size:18px; color:var(--rosewater-deep);">She said yes.</p>
-    <div class="story-photo"><img src="images/story-proposal-hand.jpg" alt="The proposal moment"></div>
+    <div class="story-photo"><img src="images/carry-laugh.jpg" alt="Saff and Bam laughing together"></div>
   </div>
 </section>
 
@@ -90,13 +88,5 @@
   </nav>
 </footer>
 
-<script>
-  var navToggle = document.getElementById('navToggle');
-  var navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', function(){
-    navLinks.classList.toggle('open');
-    navToggle.classList.toggle('is-open');
-  });
-</script>
 </body>
 </html>
