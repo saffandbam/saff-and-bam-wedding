@@ -227,7 +227,11 @@
   "use strict";
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  navToggle.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('is-open');
+    navToggle.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
+  });
 
   var target = new Date('2027-07-31T12:00:00');
   function pad(n){ return String(n).padStart(2,'0'); }
