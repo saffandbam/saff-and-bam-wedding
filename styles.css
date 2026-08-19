@@ -46,12 +46,20 @@ img{ max-width:100%; display:block; }
   letter-spacing:.01em;
 }
 .nav-toggle{
-  background:none; border:1px solid var(--nav-color, var(--ink)); color:var(--nav-color, var(--ink));
-  width:38px; height:38px; border-radius:50%;
-  font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:.85;
-  position:relative; z-index:51;
+  background:none; border:1px solid var(--nav-color, var(--ink));
+  width:38px; height:38px; border-radius:50%; padding:0;
+  cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+  position:relative; z-index:51; opacity:.85;
 }
-.nav-toggle.is-open{ border-color:var(--paper); color:var(--paper); }
+.nav-toggle .bar{
+  display:block; width:15px; height:1.5px; background:var(--nav-color, var(--ink));
+  transition:transform .3s var(--ease), opacity .2s, background .2s;
+}
+.nav-toggle.is-open{ border-color:var(--paper); opacity:1; }
+.nav-toggle.is-open .bar{ background:var(--paper); }
+.nav-toggle.is-open .bar:nth-child(1){ transform:translateY(5.5px) rotate(45deg); }
+.nav-toggle.is-open .bar:nth-child(2){ opacity:0; }
+.nav-toggle.is-open .bar:nth-child(3){ transform:translateY(-5.5px) rotate(-45deg); }
 .nav-links{
   list-style:none; margin:0; padding:0;
   position:fixed; top:0; right:0; bottom:0; width:min(78vw,320px);

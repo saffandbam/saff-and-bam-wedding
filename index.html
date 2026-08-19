@@ -102,7 +102,7 @@
 <nav class="site-nav">
   <div class="wrap">
     <a href="index.html" class="brand">S &amp; B</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
     <a href="rsvp.html" class="nav-rsvp">RSVP Now</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="active">Home</a></li>
@@ -140,9 +140,9 @@
       <a href="our-story.html" class="btn btn-primary" style="margin-top:22px;">Read Our Story →</a>
     </div>
     <div class="story-collage">
-      <div class="main"><img src="images/coast-back-1.jpg" alt="Saff and Bam at the coast"></div>
-      <div class="small s1"><img src="images/proposal-vertical.jpg" alt="The proposal moment"></div>
-      <div class="small s2"><img src="images/lookback.jpg" alt="Saff and Bam"></div>
+      <div class="main"><img src="images/coast-back-1.jpg" alt="Saff and Bam at the coast" loading="lazy"></div>
+      <div class="small s1"><img src="images/proposal-vertical.jpg" alt="The proposal moment" loading="lazy"></div>
+      <div class="small s2"><img src="images/lookback.jpg" alt="Saff and Bam" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -192,7 +192,7 @@
 <section class="rsvp-teaser">
   <div class="rsvp-outer">
     <div class="rsvp-frame">
-      <img src="images/proposal-wide.jpg" alt="Saff and Bam">
+      <img src="images/proposal-wide.jpg" alt="Saff and Bam" loading="lazy">
       <div class="rsvp-copy">
         <div class="eyebrow">Kindly</div>
         <h2>RSVP</h2>
@@ -230,7 +230,6 @@
   navToggle.addEventListener('click', function(){
     navLinks.classList.toggle('open');
     navToggle.classList.toggle('is-open');
-    navToggle.textContent = navLinks.classList.contains('open') ? '✕' : '☰';
   });
 
   var target = new Date('2027-07-31T12:00:00');
