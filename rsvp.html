@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP — Saff &amp; Bam</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  #rsvp-form.hidden, #rsvp-thanks{ display:none; }
+  #rsvp-thanks.show{ display:block; text-align:center; padding:30px 0; }
+  #rsvp-thanks .script{ font-size:36px; color:var(--rosewater-deep); }
+  .rsvp-submit{ margin-top:22px; width:100%; }
+  .rsvp-note{ text-align:center; font-size:11px; color:#8a8672; margin-top:12px; }
+</style>
+</head>
+<body class="solid-nav">
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">S &amp; B</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="details.html">Details</a></li>
+      <li><a href="rsvp.html" class="active">RSVP</a></li>
+      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="gifts.html">Gifts</a></li>
+      <li><a href="photos.html">Photos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">📝 Kindly reply</div>
+  <h1>RSVP</h1>
+  <div class="divider"></div>
+  <p class="lead">Please let us know by your RSVP deadline — we'll confirm the exact date soon.</p>
+</header>
+
+<section class="wrap-narrow">
+  <div class="card">
+    <form id="rsvp-form">
+      <div class="field">
+        <label for="f-name">Full name</label>
+        <input type="text" id="f-name" name="name" required placeholder="Your name">
+      </div>
+      <div class="field">
+        <label>Will you be joining us?</label>
+        <div class="attend-toggle">
+          <input type="radio" id="att-yes" name="attending" value="yes" checked>
+          <label for="att-yes">Joyfully accept</label>
+          <input type="radio" id="att-no" name="attending" value="no">
+          <label for="att-no">Regretfully decline</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-plus">Bringing a plus one?</label>
+        <select id="f-plus" name="plusOne">
+          <option value="no">No</option>
+          <option value="ceremony-and-reception">Yes — ceremony &amp; reception</option>
+          <option value="reception-only">Yes — reception only</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-guests">Number of guests (incl. you)</label>
+        <input type="number" id="f-guests" name="guests" min="1" max="6" value="1">
+      </div>
+      <div class="field">
+        <label for="f-dietary">Dietary requirements / allergies</label>
+        <textarea id="f-dietary" name="dietary" rows="2" placeholder="Let us know so we can take care of you"></textarea>
+      </div>
+      <div class="field">
+        <label for="f-msg">A message for us</label>
+        <textarea id="f-msg" name="message" rows="3" placeholder="Optional"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary rsvp-submit">Send RSVP</button>
+      <p class="rsvp-note">This form is a front-end preview — connect it to a form service (e.g. Formspree, Google Forms) or your Reminders/email so replies actually reach you.</p>
+    </form>
+
+    <div id="rsvp-thanks">
+      <div class="script">Thank you</div>
+      <p style="margin-top:10px;font-size:14px;color:#4a4735;">Your reply has been noted — we can't wait to celebrate with you.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="script">With love,</div>
+  <div class="script" style="margin-top:4px;">Saff &amp; Bam</div>
+  <div class="tag">Saffandbam@gmail.com</div>
+  <nav class="foot-nav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="details.html">Details</a>
+    <a href="travel-stay.html">Travel &amp; Stay</a><a href="faq.html">FAQ</a><a href="gifts.html">Gifts</a><a href="photos.html">Photos</a>
+  </nav>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  var form = document.getElementById('rsvp-form');
+  var thanks = document.getElementById('rsvp-thanks');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    form.classList.add('hidden');
+    thanks.classList.add('show');
+  });
+</script>
+</body>
+</html>

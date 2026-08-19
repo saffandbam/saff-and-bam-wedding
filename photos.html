@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photos — Saff &amp; Bam</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="solid-nav">
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">S &amp; B</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="details.html">Details</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="gifts.html">Gifts</a></li>
+      <li><a href="photos.html" class="active">Photos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">📸 A few of our favourites</div>
+  <h1>Photos</h1>
+  <div class="divider"></div>
+  <p class="lead">#SaffAndBam2027</p>
+</header>
+
+<section class="wrap">
+  <div class="gallery">
+    <img src="images/hero-3.jpg" alt="Saff and Bam">
+    <img src="images/hero-1.jpg" alt="Saff and Bam">
+    <img src="images/story-restaurant.jpg" alt="Saff and Bam">
+    <img src="images/hero-2.jpg" alt="Saff and Bam">
+    <img src="images/hero-4.jpg" alt="Saff and Bam">
+    <img src="images/story-proposal-hand.jpg" alt="The proposal">
+  </div>
+</section>
+
+<footer>
+  <div class="script">With love,</div>
+  <div class="script" style="margin-top:4px;">Saff &amp; Bam</div>
+  <div class="tag">Saffandbam@gmail.com</div>
+  <nav class="foot-nav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="details.html">Details</a>
+    <a href="rsvp.html">RSVP</a><a href="travel-stay.html">Travel &amp; Stay</a><a href="faq.html">FAQ</a><a href="gifts.html">Gifts</a>
+  </nav>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>

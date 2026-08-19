@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Details — Saff &amp; Bam</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .order-list{ max-width:420px; margin:0 auto; list-style:none; padding:0; counter-reset:od; }
+  .order-list li{ counter-increment:od; display:flex; gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px; }
+  .order-list li::before{ content:counter(od); font-family:'Fraunces',serif; font-style:italic; color:var(--rosewater-deep); font-size:14px; width:20px; flex-shrink:0; }
+  .order-note{ text-align:center; font-size:12px; color:#6b6752; margin-top:16px; }
+  .swatch-row{ display:flex; gap:14px; justify-content:center; margin:22px 0; flex-wrap:wrap; }
+  .swatch-lg{ text-align:center; }
+  .swatch-lg .dot{ width:56px; height:56px; border-radius:50%; margin:0 auto 8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
+  .swatch-lg .name{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#6b6752; }
+</style>
+</head>
+<body class="solid-nav">
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">S &amp; B</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="our-story.html">Our Story</a></li>
+      <li><a href="details.html" class="active">Details</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li><a href="travel-stay.html">Travel &amp; Stay</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="gifts.html">Gifts</a></li>
+      <li><a href="photos.html">Photos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">💒 Join us</div>
+  <h1>The Details</h1>
+  <div class="divider"></div>
+  <p class="lead">All times below are tentative and will be confirmed closer to the day.</p>
+</header>
+
+<section class="wrap-narrow">
+  <div class="card-grid cols-2">
+    <div class="card">
+      <div class="eyebrow">Ceremony</div>
+      <h3 style="margin-top:6px;font-size:20px;">Grove Ferry Inn</h3>
+      <div class="detail-row"><span class="k">Date</span><span class="v">31st July 2027</span></div>
+      <div class="detail-row"><span class="k">Guest arrival</span><span class="v">11:00am</span></div>
+      <div class="detail-row"><span class="k">Guests seated</span><span class="v">11:30am</span></div>
+      <div class="detail-row"><span class="k">Ceremony starts</span><span class="v">12:00pm</span></div>
+      <div class="detail-row"><span class="k">Parking</span><span class="v">Free, on site</span></div>
+      <p style="margin-top:16px;font-size:13px;color:#4a4735;">Following the ceremony we'd love for you to join us for some food, drinks and celebration.</p>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Reception</div>
+      <h3 style="margin-top:6px;font-size:20px;">Same venue!</h3>
+      <div class="detail-row"><span class="k">Reception begins</span><span class="v">4–5pm</span></div>
+      <div class="detail-row"><span class="k">Evening guests</span><span class="v">See order below</span></div>
+      <div class="detail-row"><span class="k">Last orders</span><span class="v">1:00am</span></div>
+      <p style="margin-top:16px;font-size:13px;color:#4a4735;">Detailed timings for drinks, the wedding breakfast and the evening reception will follow closer to the day.</p>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:13px;color:#4a4735;margin-top:18px;">📍 Grove Ferry Inn, Canterbury, Upstreet, CT3 4BP</p>
+</section>
+
+<section>
+  <div class="section-head">
+    <div class="eyebrow">🗓 The plan</div>
+    <h2>Order of the Day</h2>
+  </div>
+  <ol class="order-list">
+    <li>Guest arrival</li>
+    <li>Ceremony</li>
+    <li>Drinks &amp; photographs</li>
+    <li>Wedding breakfast</li>
+    <li>Speeches</li>
+    <li>Cake cutting</li>
+    <li>Evening guests arrive</li>
+    <li>First dance</li>
+    <li>Evening food</li>
+    <li>Last orders</li>
+    <li>Carriages</li>
+  </ol>
+  <p class="order-note">Detailed timings will be added closer to the wedding.</p>
+</section>
+
+<section class="wrap-narrow" style="text-align:center;">
+  <div class="section-head">
+    <div class="eyebrow">🍽 Food &amp; Drink</div>
+    <h2>Keeping you fed and watered</h2>
+  </div>
+  <p style="font-size:14px;color:#4a4735;">Full details on the wedding breakfast menu and evening food will be shared closer to the day. If you have any dietary requirements or allergies, please let us know on your RSVP so we can take good care of you.</p>
+  <a class="btn btn-ghost" href="rsvp.html" style="margin-top:20px;">Go to RSVP →</a>
+</section>
+
+<section id="dress-code" style="text-align:center;">
+  <div class="section-head">
+    <div class="eyebrow">👗 Dress Code</div>
+    <h2>Formal wedding attire</h2>
+    <p class="lead">Think summer dresses, suits, jumpsuits and your favourite excuse to get a little dressed up.</p>
+  </div>
+
+  <p style="max-width:520px;margin:0 auto;font-size:14px;color:#4a4735;">We kindly ask that guests avoid <strong>white, ivory and cream</strong>, as well as the colours below — these are reserved for our wedding party.</p>
+
+  <div class="swatch-row">
+    <div class="swatch-lg"><div class="dot" style="background:var(--pistachio);"></div><div class="name">Pistachio</div></div>
+    <div class="swatch-lg"><div class="dot" style="background:var(--rosewater);"></div><div class="name">Rosewater</div></div>
+    <div class="swatch-lg"><div class="dot" style="background:var(--lemon);"></div><div class="name">Lemon Icing</div></div>
+    <div class="swatch-lg"><div class="dot" style="background:var(--babyblue);"></div><div class="name">Baby Blue</div></div>
+  </div>
+
+  <p style="font-size:13px;color:#6b6752;">Other than that — wear something you feel amazing in. We can't wait to see you all dressed up!</p>
+</section>
+
+<footer>
+  <div class="script">With love,</div>
+  <div class="script" style="margin-top:4px;">Saff &amp; Bam</div>
+  <div class="tag">Saffandbam@gmail.com</div>
+  <nav class="foot-nav">
+    <a href="index.html">Home</a><a href="our-story.html">Our Story</a><a href="rsvp.html">RSVP</a>
+    <a href="travel-stay.html">Travel &amp; Stay</a><a href="faq.html">FAQ</a><a href="gifts.html">Gifts</a><a href="photos.html">Photos</a>
+  </nav>
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
