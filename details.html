@@ -11,10 +11,7 @@
   .page-header h1{ color:var(--paper); }
   .page-header .lead{ color:rgba(251,248,241,.75); }
   .page-header .divider{ background:rgba(251,248,241,.3); }
-  .page-header::after{ height:28px; }
-
-  .detail-photo{ max-width:900px; margin:0 auto 6px; padding:0 24px; }
-  .detail-photo img{ width:100%; max-height:340px; object-fit:cover; border-radius:12px; box-shadow:0 22px 40px -20px rgba(44,42,34,.35); display:block; }
+  .page-header::after{ height:52px; }
 
   .card-icon{ width:26px; height:26px; color:var(--ink); margin-bottom:8px; }
   .card .eyebrow{ display:flex; align-items:center; gap:8px; }
@@ -30,9 +27,18 @@
   }
   .day-item .label{ font-size:14px; padding-top:9px; }
 
-  .food-block{ background:var(--pistachio); padding:64px 24px; text-align:center; }
-  .food-block .eyebrow{ color:var(--ink); opacity:.55; justify-content:center; }
-  .food-block p{ color:#3a4232; }
+  .food-block{ background:var(--ink); padding:64px 24px; text-align:center; }
+  .food-block .eyebrow{ color:var(--paper); opacity:.55; justify-content:center; }
+  .food-block h2{ color:var(--paper); }
+  .food-block p{ color:rgba(251,248,241,.8); }
+  .food-block .btn-primary{ border-color:var(--paper) !important; color:var(--paper) !important; }
+  .food-block .btn-primary:hover{ background:var(--paper); color:var(--ink) !important; }
+
+  /* ---------- dress code swatches ---------- */
+  .swatch-row{ display:flex; gap:14px; justify-content:center; margin:22px 0; flex-wrap:wrap; }
+  .swatch-lg{ text-align:center; }
+  .swatch-lg .dot{ width:56px; height:56px; border-radius:50%; margin:0 auto 8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
+  .swatch-lg .name{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#6b6752; }
 </style>
 </head>
 <body>
@@ -58,10 +64,6 @@
   <div class="divider"></div>
   <p class="lead">All times below are tentative and will be confirmed closer to the day.</p>
 </header>
-
-<div class="detail-photo">
-  <img src="images/kiss-cliff.jpg" alt="Saff and Bam">
-</div>
 
 <section class="wrap-narrow">
   <div class="card-grid cols-2">
