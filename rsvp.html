@@ -6,11 +6,19 @@
 <title>RSVP — Saff &amp; Bam</title>
 <link rel="stylesheet" href="styles.css">
 <style>
+  .page-header{ background:var(--ink); padding:88px 24px 0; }
+  .page-header .eyebrow{ color:var(--paper); opacity:.55; }
+  .page-header h1{ color:var(--paper); }
+  .page-header .lead{ color:rgba(251,248,241,.75); }
+  .page-header .divider{ background:rgba(251,248,241,.3); }
+  .page-header::after{ height:28px; }
+
+  .wrap-narrow{ padding-top:0 !important; }
+
   #rsvp-form.hidden, #rsvp-thanks{ display:none; }
   #rsvp-thanks.show{ display:block; text-align:center; padding:30px 0; }
-  #rsvp-thanks .script{ font-size:36px; color:var(--rosewater-deep); }
+  #rsvp-thanks .script{ font-size:36px; color:var(--ink); }
   .rsvp-submit{ margin-top:26px; width:100%; justify-content:center; }
-  .rsvp-note{ text-align:center; font-size:11px; color:#8a8672; margin-top:12px; }
 </style>
 </head>
 <body>
@@ -31,7 +39,7 @@
 </nav>
 
 <header class="page-header">
-  <div class="eyebrow">📝 Kindly reply</div>
+  <div class="eyebrow">Kindly reply</div>
   <h1>RSVP</h1>
   <div class="divider"></div>
   <p class="lead">Please let us know by your RSVP deadline — we'll confirm the exact date soon.</p>
@@ -39,42 +47,68 @@
 
 <section class="wrap-narrow">
   <div class="card">
-    <form id="rsvp-form">
+    <form id="rsvp-form" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="rsvp" />
+      <p class="hidden" style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+
       <div class="field">
         <label for="f-name">Full name</label>
-        <input type="text" id="f-name" name="name" required placeholder="Your name">
+        <input type="text" id="f-name" name="full_name" required placeholder="Your name">
       </div>
       <div class="field">
         <label>Will you be joining us?</label>
         <div class="attend-toggle">
-          <input type="radio" id="att-yes" name="attending" value="yes" checked>
+          <input type="radio" id="att-yes" name="attending" value="Joyfully Accepts" checked>
           <label for="att-yes">Joyfully accept</label>
-          <input type="radio" id="att-no" name="attending" value="no">
+          <input type="radio" id="att-no" name="attending" value="Regretfully Declines">
           <label for="att-no">Regretfully decline</label>
         </div>
       </div>
       <div class="field">
-        <label for="f-plus">Bringing a plus one?</label>
-        <select id="f-plus" name="plusOne">
-          <option value="no">No</option>
-          <option value="ceremony-and-reception">Yes — ceremony &amp; reception</option>
-          <option value="reception-only">Yes — reception only</option>
-        </select>
+        <label>Which part(s) will you be attending?</label>
+        <div class="attend-toggle">
+          <input type="radio" id="part-cer" name="attending_parts" value="Ceremony only">
+          <label for="part-cer">Ceremony</label>
+          <input type="radio" id="part-rec" name="attending_parts" value="Reception only">
+          <label for="part-rec">Reception</label>
+          <input type="radio" id="part-both" name="attending_parts" value="Ceremony & Reception" checked>
+          <label for="part-both">Both</label>
+        </div>
       </div>
       <div class="field">
         <label for="f-guests">Number of guests (incl. you)</label>
-        <input type="number" id="f-guests" name="guests" min="1" max="6" value="1">
+        <input type="number" id="f-guests" name="guest_count" min="1" max="6" value="1">
+      </div>
+      <div class="field">
+        <label for="f-others">Who else are you responding for?</label>
+        <input type="text" id="f-others" name="responding_for" placeholder="Names of other guests on your invitation">
       </div>
       <div class="field">
         <label for="f-dietary">Dietary requirements / allergies</label>
         <textarea id="f-dietary" name="dietary" rows="2" placeholder="Let us know so we can take care of you"></textarea>
       </div>
       <div class="field">
-        <label for="f-msg">A message for us</label>
+        <label for="f-access">Accessibility or additional support requirements</label>
+        <textarea id="f-access" name="accessibility" rows="2" placeholder="Optional"></textarea>
+      </div>
+      <div class="field">
+        <label>Will any children be attending?</label>
+        <div class="attend-toggle">
+          <input type="radio" id="child-no" name="children_attending" value="No" checked>
+          <label for="child-no">No</label>
+          <input type="radio" id="child-yes" name="children_attending" value="Yes">
+          <label for="child-yes">Yes</label>
+        </div>
+      </div>
+      <div class="field">
+        <label for="f-child-names">Names &amp; ages of children</label>
+        <input type="text" id="f-child-names" name="children_names" placeholder="Leave blank if none">
+      </div>
+      <div class="field">
+        <label for="f-msg">Anything else you'd like us to know?</label>
         <textarea id="f-msg" name="message" rows="3" placeholder="Optional"></textarea>
       </div>
       <button type="submit" class="btn btn-primary rsvp-submit">Send RSVP</button>
-      <p class="rsvp-note">This form is a front-end preview — connect it to a form service (e.g. Formspree, Google Forms) or your Reminders/email so replies actually reach you.</p>
     </form>
 
     <div id="rsvp-thanks">
@@ -97,10 +131,33 @@
 <script>
   var form = document.getElementById('rsvp-form');
   var thanks = document.getElementById('rsvp-thanks');
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(function(key){ return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]); })
+      .join("&");
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    form.classList.add('hidden');
-    thanks.classList.add('show');
+
+    var formData = new FormData(form);
+    var payload = {};
+    formData.forEach(function(value, key){ payload[key] = value; });
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(payload)
+    })
+    .then(function(){
+      form.classList.add('hidden');
+      thanks.classList.add('show');
+    })
+    .catch(function(error){
+      alert("Something went wrong sending your RSVP — please try again, or email us directly at Saffandbam@gmail.com.");
+      console.error(error);
+    });
   });
 </script>
 </body>
