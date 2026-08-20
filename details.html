@@ -6,14 +6,33 @@
 <title>Details — Saff &amp; Bam</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .order-list{ max-width:420px; margin:0 auto; list-style:none; padding:0; counter-reset:od; }
-  .order-list li{ counter-increment:od; display:flex; gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px; }
-  .order-list li::before{ content:counter(od); font-family:'Fraunces',serif; font-style:italic; color:var(--rosewater-deep); font-size:14px; width:20px; flex-shrink:0; }
-  .order-note{ text-align:center; font-size:12px; color:#6b6752; margin-top:16px; }
-  .swatch-row{ display:flex; gap:14px; justify-content:center; margin:22px 0; flex-wrap:wrap; }
-  .swatch-lg{ text-align:center; }
-  .swatch-lg .dot{ width:56px; height:56px; border-radius:50%; margin:0 auto 8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
-  .swatch-lg .name{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#6b6752; }
+  .page-header{ background:var(--ink); padding:88px 24px 0; }
+  .page-header .eyebrow{ color:var(--paper); opacity:.55; }
+  .page-header h1{ color:var(--paper); }
+  .page-header .lead{ color:rgba(251,248,241,.75); }
+  .page-header .divider{ background:rgba(251,248,241,.3); }
+  .page-header::after{ height:28px; }
+
+  .detail-photo{ max-width:900px; margin:0 auto 6px; padding:0 24px; }
+  .detail-photo img{ width:100%; max-height:340px; object-fit:cover; border-radius:12px; box-shadow:0 22px 40px -20px rgba(44,42,34,.35); display:block; }
+
+  .card-icon{ width:26px; height:26px; color:var(--ink); margin-bottom:8px; }
+  .card .eyebrow{ display:flex; align-items:center; gap:8px; }
+
+  /* ---------- order of the day timeline ---------- */
+  .day-timeline{ position:relative; max-width:440px; margin:0 auto; padding-left:56px; }
+  .day-timeline::before{ content:""; position:absolute; left:19px; top:4px; bottom:4px; width:1px; background:var(--line); }
+  .day-item{ position:relative; padding:11px 0; }
+  .day-item .num{
+    position:absolute; left:-56px; top:6px; width:40px; height:40px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--ink); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-style:italic; font-size:14px; color:var(--ink);
+  }
+  .day-item .label{ font-size:14px; padding-top:9px; }
+
+  .food-block{ background:var(--pistachio); padding:64px 24px; text-align:center; }
+  .food-block .eyebrow{ color:var(--ink); opacity:.55; justify-content:center; }
+  .food-block p{ color:#3a4232; }
 </style>
 </head>
 <body>
@@ -34,15 +53,20 @@
 </nav>
 
 <header class="page-header">
-  <div class="eyebrow">💒 Join us</div>
+  <div class="eyebrow">Join us</div>
   <h1>The Details</h1>
   <div class="divider"></div>
   <p class="lead">All times below are tentative and will be confirmed closer to the day.</p>
 </header>
 
+<div class="detail-photo">
+  <img src="images/kiss-cliff.jpg" alt="Saff and Bam">
+</div>
+
 <section class="wrap-narrow">
   <div class="card-grid cols-2">
     <div class="card">
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="13" r="5"/><circle cx="15" cy="13" r="5"/></svg>
       <div class="eyebrow">Ceremony</div>
       <h3 style="margin-top:6px;font-size:20px;">Grove Ferry Inn</h3>
       <div class="detail-row"><span class="k">Date</span><span class="v">31st July 2027</span></div>
@@ -53,6 +77,7 @@
       <p style="margin-top:16px;font-size:13px;color:#4a4735;">Following the ceremony we'd love for you to join us for some food, drinks and celebration.</p>
     </div>
     <div class="card">
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3l1.5 8.5a3.5 3.5 0 0 0 7 0L17 3"/><path d="M12 15v6M8.5 21h7"/><path d="M6.5 6.5h11"/></svg>
       <div class="eyebrow">Reception</div>
       <h3 style="margin-top:6px;font-size:20px;">Same venue!</h3>
       <div class="detail-row"><span class="k">Reception begins</span><span class="v">4–5pm</span></div>
@@ -62,42 +87,42 @@
     </div>
   </div>
 
-  <p style="text-align:center;font-size:13px;color:#4a4735;margin-top:18px;">📍 Grove Ferry Inn, Canterbury, Upstreet, CT3 4BP</p>
+  <p style="text-align:center;font-size:13px;color:#4a4735;margin-top:18px;">Grove Ferry Inn, Canterbury, Upstreet, CT3 4BP</p>
 </section>
 
 <section>
   <div class="section-head">
-    <div class="eyebrow">🗓 The plan</div>
+    <div class="eyebrow">The plan</div>
     <h2>Order of the Day</h2>
   </div>
-  <ol class="order-list">
-    <li>Guest arrival</li>
-    <li>Ceremony</li>
-    <li>Drinks &amp; photographs</li>
-    <li>Wedding breakfast</li>
-    <li>Evening guests arrive</li>
-    <li>Speeches</li>
-    <li>Cake cutting</li>
-    <li>First dance</li>
-    <li>Evening food</li>
-    <li>Last orders</li>
-    <li>Carriages</li>
-  </ol>
+  <div class="day-timeline">
+    <div class="day-item"><div class="num">1</div><div class="label">Guest arrival</div></div>
+    <div class="day-item"><div class="num">2</div><div class="label">Ceremony</div></div>
+    <div class="day-item"><div class="num">3</div><div class="label">Drinks &amp; photographs</div></div>
+    <div class="day-item"><div class="num">4</div><div class="label">Wedding breakfast</div></div>
+    <div class="day-item"><div class="num">5</div><div class="label">Speeches</div></div>
+    <div class="day-item"><div class="num">6</div><div class="label">Cake cutting</div></div>
+    <div class="day-item"><div class="num">7</div><div class="label">Evening guests arrive</div></div>
+    <div class="day-item"><div class="num">8</div><div class="label">First dance</div></div>
+    <div class="day-item"><div class="num">9</div><div class="label">Evening food</div></div>
+    <div class="day-item"><div class="num">10</div><div class="label">Last orders</div></div>
+    <div class="day-item"><div class="num">11</div><div class="label">Carriages</div></div>
+  </div>
   <p class="order-note">Detailed timings will be added closer to the wedding.</p>
 </section>
 
-<section class="wrap-narrow" style="text-align:center;">
+<section class="food-block">
   <div class="section-head">
-    <div class="eyebrow">🍽 Food &amp; Drink</div>
+    <div class="eyebrow">Food &amp; Drink</div>
     <h2>Keeping you fed and watered</h2>
   </div>
-  <p style="font-size:14px;color:#4a4735;">Full details on the wedding breakfast menu and evening food will be shared closer to the day. If you have any dietary requirements or allergies, please let us know on your RSVP so we can take good care of you.</p>
-  <a class="btn btn-ghost" href="rsvp.html" style="margin-top:20px;">Go to RSVP</a>
+  <p style="font-size:14px;">Full details on the wedding breakfast menu and evening food will be shared closer to the day. If you have any dietary requirements or allergies, please let us know on your RSVP so we can take good care of you.</p>
+  <a class="btn btn-primary" href="rsvp.html" style="margin-top:20px; border-color:var(--ink); color:var(--ink);">Go to RSVP</a>
 </section>
 
 <section id="dress-code" style="text-align:center;">
   <div class="section-head">
-    <div class="eyebrow">👗 Dress Code</div>
+    <div class="eyebrow">Dress Code</div>
     <h2>Formal wedding attire</h2>
     <p class="lead">Think summer dresses, suits, jumpsuits and your favourite excuse to get a little dressed up.</p>
   </div>
