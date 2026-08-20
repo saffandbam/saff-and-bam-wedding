@@ -17,14 +17,18 @@
   .card .eyebrow{ display:flex; align-items:center; gap:8px; }
 
   /* ---------- order of the day timeline ---------- */
-  .day-timeline{ position:relative; max-width:440px; margin:0 auto; padding-left:56px; }
+  .day-timeline{ position:relative; max-width:440px; margin:0 auto; padding-left:56px; perspective:800px; }
   .day-timeline::before{ content:""; position:absolute; left:19px; top:4px; bottom:4px; width:1px; background:var(--line); }
-  .day-item{ position:relative; padding:11px 0; }
+  .day-progress{ position:absolute; left:19px; top:4px; width:2px; height:0; background:var(--ink); transition:height .12s linear; }
+  .day-item{ position:relative; padding:11px 0; transform-style:preserve-3d; }
   .day-item .num{
     position:absolute; left:-56px; top:6px; width:40px; height:40px; border-radius:50%;
     background:var(--paper); border:1px solid var(--ink); display:flex; align-items:center; justify-content:center;
     font-family:'Fraunces',serif; font-style:italic; font-size:14px; color:var(--ink);
+    opacity:.4; transform:translateZ(-30px) scale(.85);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s;
   }
+  .day-item.in-view .num{ opacity:1; transform:translateZ(24px) scale(1.06); box-shadow:0 8px 16px -6px rgba(44,42,34,.4); }
   .day-item .label{ font-size:14px; padding-top:9px; }
 
   .food-block{ background:var(--ink); padding:64px 24px; text-align:center; }
@@ -42,10 +46,20 @@
   #order-of-day{ padding-top:36px; }
   #order-of-day h2{ font-size:clamp(24px,4vw,32px); }
 
-  /* ---------- dress code swatches ---------- */
-  .swatch-row{ display:flex; gap:14px; justify-content:center; margin:22px 0; flex-wrap:wrap; }
+  /* ---------- dress code swatches: real 3D spheres ---------- */
+  .swatch-row{ display:flex; gap:18px; justify-content:center; margin:22px 0; flex-wrap:wrap; }
   .swatch-lg{ text-align:center; }
-  .swatch-lg .dot{ width:56px; height:56px; border-radius:50%; margin:0 auto 8px; box-shadow:inset 0 0 0 1px rgba(0,0,0,.08); }
+  .swatch-lg .dot{
+    width:56px; height:56px; border-radius:50%; margin:0 auto 8px; position:relative; overflow:hidden;
+    box-shadow:inset -6px -8px 14px rgba(0,0,0,.18), inset 4px 5px 10px rgba(255,255,255,.5), 0 10px 16px -8px rgba(44,42,34,.5);
+    transition:transform .15s ease-out;
+    cursor:pointer;
+  }
+  .swatch-lg .dot::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.75), transparent 55%);
+    pointer-events:none;
+  }
   .swatch-lg .name{ font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:#6b6752; }
 </style>
 </head>
@@ -102,7 +116,8 @@
   <div class="section-head">
     <h2>Order of the Day</h2>
   </div>
-  <div class="day-timeline">
+  <div class="day-timeline" id="dayTimeline">
+    <div class="day-progress" id="dayProgress"></div>
     <div class="day-item"><div class="num">1</div><div class="label">Guest arrival</div></div>
     <div class="day-item"><div class="num">2</div><div class="label">Ceremony</div></div>
     <div class="day-item"><div class="num">3</div><div class="label">Drinks &amp; photographs</div></div>
@@ -155,5 +170,62 @@
   </nav>
 </footer>
 
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- self-drawing timeline progress line ---- */
+  var timeline = document.getElementById('dayTimeline');
+  var progress = document.getElementById('dayProgress');
+  if (timeline && progress && !reduceMotion){
+    function updateProgress(){
+      var rect = timeline.getBoundingClientRect();
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var total = rect.height;
+      var visible = vh * 0.75 - rect.top;
+      var pct = Math.max(0, Math.min(1, visible / total));
+      progress.style.height = (pct * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, {passive:true});
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  } else if (progress){
+    progress.style.height = '100%';
+  }
+
+  /* ---- depth-pop markers as each step scrolls into view ---- */
+  var items = document.querySelectorAll('.day-item');
+  if ('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in-view'); }
+      });
+    }, {threshold:.5});
+    items.forEach(function(item){ io.observe(item); });
+  } else {
+    items.forEach(function(item){ item.classList.add('in-view'); });
+  }
+
+  /* ---- pointer-tilt on the dress-code spheres ---- */
+  var dots = document.querySelectorAll('.swatch-lg .dot');
+  dots.forEach(function(dot){
+    dot.addEventListener('mousemove', function(e){
+      var r = dot.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5;
+      var y = (e.clientY - r.top) / r.height - .5;
+      dot.style.transform = 'perspective(300px) rotateY(' + (x*28) + 'deg) rotateX(' + (-y*28) + 'deg)';
+    });
+    dot.addEventListener('mouseleave', function(){ dot.style.transform = 'perspective(300px) rotateY(0) rotateX(0)'; });
+    dot.addEventListener('touchmove', function(e){
+      var t = e.touches[0]; var r = dot.getBoundingClientRect();
+      var x = (t.clientX - r.left) / r.width - .5;
+      var y = (t.clientY - r.top) / r.height - .5;
+      dot.style.transform = 'perspective(300px) rotateY(' + (x*28) + 'deg) rotateX(' + (-y*28) + 'deg)';
+    }, {passive:true});
+    dot.addEventListener('touchend', function(){ dot.style.transform = 'perspective(300px) rotateY(0) rotateX(0)'; });
+  });
+})();
+</script>
 </body>
 </html>
