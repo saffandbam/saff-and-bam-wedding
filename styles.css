@@ -34,7 +34,7 @@ img{ max-width:100%; display:block; }
 .wrap-narrow{ max-width:680px; margin:0 auto; padding:0 24px; }
 
 /* ---------- NAV — brand mark + persistent side list, always visible ---------- */
-.site-nav{ position:fixed; top:0; left:0; z-index:44; padding:22px 24px; }
+.site-nav{ position:fixed; top:0; left:0; z-index:44; padding:22px 24px 22px 80px; }
 .brand{
   font-family:'Fraunces', serif; font-style:italic; font-weight:560; font-size:20px; color:#fff;
   letter-spacing:.01em; mix-blend-mode:difference;
