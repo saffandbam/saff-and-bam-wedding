@@ -6,6 +6,14 @@
 <title>Travel &amp; Stay — Saff &amp; Bam</title>
 <link rel="stylesheet" href="styles.css">
 <style>
+  .page-header{ background:var(--ink); padding:88px 24px 0; }
+  .page-header .eyebrow{ color:var(--paper); opacity:.55; }
+  .page-header h1{ color:var(--paper); }
+  .page-header .divider{ background:rgba(251,248,241,.3); }
+  .page-header::after{ height:28px; }
+
+  .venue-line{ text-align:center; font-size:12px; color:#6b6752; margin-top:-4px; margin-bottom:26px; }
+
   .stay-item{ padding:14px 0; border-bottom:1px solid var(--line); }
   .stay-item:last-child{ border-bottom:none; }
   .stay-item .name{ font-family:'Fraunces',serif; font-size:16px; }
@@ -32,13 +40,13 @@
 </nav>
 
 <header class="page-header">
-  <div class="eyebrow">🏨 Getting here &amp; staying over</div>
+  <div class="eyebrow">Getting here &amp; staying over</div>
   <h1>Travel &amp; Stay</h1>
   <div class="divider"></div>
-  <p class="lead">📍 Grove Ferry Inn, Canterbury, Upstreet, CT3 4BP</p>
 </header>
 
 <section class="wrap-narrow">
+  <p class="venue-line">📍 Grove Ferry Inn, Canterbury, Upstreet, CT3 4BP</p>
   <div class="section-head">
     <div class="eyebrow">Accommodation</div>
     <h2>Where to stay</h2>
