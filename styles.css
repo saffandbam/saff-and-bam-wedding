@@ -95,6 +95,7 @@ body.nav-open .nav-drawer{ opacity:1; pointer-events:auto; transform:none; }
 @media (max-width:860px){
   .persistent-nav{ display:none; }
   .nav-toggle{ display:flex; }
+  .site-nav{ position:absolute; }
 }
 @media (min-width:861px){
   .nav-drawer{ display:none; }
