@@ -10,7 +10,10 @@
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
 <style>
-  .page-header{ padding-top:88px; }
+  .page-header{ background:var(--ink); padding:88px 24px 0; }
+  .page-header .eyebrow{ color:var(--paper); opacity:.55; }
+  .page-header h1{ color:var(--paper); }
+  .page-header .divider{ background:rgba(251,248,241,.3); }
   .page-header::after{ height:28px; }
   .wrap-narrow{ padding-top:0 !important; }
 
@@ -66,10 +69,10 @@
   #error-message, #success-message{
     font-family:'Inter', sans-serif !important; border-radius:10px !important; max-width:none !important;
   }
-  #success-message{ text-align:center; padding:40px 24px !important; }
+  #success-message{ text-align:center; padding:40px 24px !important; background-color:var(--ink) !important; border-color:var(--ink) !important; }
   #success-message .sib-form-message-panel__text::before{
     content:"Thank you"; display:block; font-family:'Fraunces', serif; font-style:italic;
-    font-weight:560; font-size:32px; color:var(--ink); margin-bottom:10px;
+    font-weight:560; font-size:32px; color:var(--paper); margin-bottom:10px;
   }
   #success-message .sib-form-message-panel__inner-text{ display:none; }
 </style>
@@ -95,7 +98,6 @@
   <div class="eyebrow">Kindly reply</div>
   <h1>RSVP</h1>
   <div class="divider"></div>
-  <p class="lead">Please let us know by your RSVP deadline — we'll confirm the exact date soon.</p>
 </header>
 
 <section class="wrap-narrow">
@@ -114,7 +116,7 @@
           </div>
         </div>
 
-        <div id="success-message" class="sib-form-message-panel" style="font-size:14px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66;">
+        <div id="success-message" class="sib-form-message-panel" style="font-size:14px; text-align:left; color:rgba(251,248,241,.85); background-color:#2c2a22; border-color:#2c2a22;">
           <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
             <span class="sib-form-message-panel__inner-text">Your reply has been noted — we can't wait to celebrate with you.</span>
           </div>
@@ -122,8 +124,6 @@
 
         <div id="sib-container" class="sib-container--large sib-container--vertical">
           <form id="sib-form" method="POST" action="https://ae28b46e.sibforms.com/v2/serve/MUIFAOjK3eO8dAZDOKfLMOBKGm2W6zwSKRwbAYHGiNFWRVUVmMeKex0rwNuC7cmGlMdgz1mXQD7Y73DLa9WJbB88eVyIqWJeo8Xqa0dWRXQB8TVyqRTDMMqgpmdTqTsrrfMJDedqrzFmfut9UezSVvoIV2XOTHFMsrSc2RVcMuxH8L9aWgJiV4B8ldHcEPJFOHd4IV3TK_pi1WtYTw==" data-type="subscription">
-
-            <div class="sib-form-block"><p>Saff &amp; Bam</p></div>
 
             <!-- Real email address — required so Brevo can create the contact and send the confirmation -->
             <div class="sib-input sib-form-block">
